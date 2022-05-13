@@ -32,6 +32,9 @@ namespace StudyLog
             this.components = new System.ComponentModel.Container();
             this.contextMenuStrip1 = new System.Windows.Forms.ContextMenuStrip(this.components);
             this.파일경로ToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.최소화ToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.종료ToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.시작끝ToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.closeBtn = new System.Windows.Forms.Button();
             this.shadowPanel1 = new CustomControls_dll.ShadowPanel();
             this.studyBtn = new CustomControls_dll.ShadowPanel();
@@ -42,16 +45,40 @@ namespace StudyLog
             // contextMenuStrip1
             // 
             this.contextMenuStrip1.Items.AddRange(new System.Windows.Forms.ToolStripItem[] {
-            this.파일경로ToolStripMenuItem});
+            this.시작끝ToolStripMenuItem,
+            this.파일경로ToolStripMenuItem,
+            this.최소화ToolStripMenuItem,
+            this.종료ToolStripMenuItem});
             this.contextMenuStrip1.Name = "contextMenuStrip1";
-            this.contextMenuStrip1.Size = new System.Drawing.Size(127, 26);
+            this.contextMenuStrip1.Size = new System.Drawing.Size(181, 114);
             // 
             // 파일경로ToolStripMenuItem
             // 
             this.파일경로ToolStripMenuItem.Name = "파일경로ToolStripMenuItem";
-            this.파일경로ToolStripMenuItem.Size = new System.Drawing.Size(126, 22);
+            this.파일경로ToolStripMenuItem.Size = new System.Drawing.Size(180, 22);
             this.파일경로ToolStripMenuItem.Text = "파일 경로";
             this.파일경로ToolStripMenuItem.Click += new System.EventHandler(this.파일경로ToolStripMenuItem_Click);
+            // 
+            // 최소화ToolStripMenuItem
+            // 
+            this.최소화ToolStripMenuItem.Name = "최소화ToolStripMenuItem";
+            this.최소화ToolStripMenuItem.Size = new System.Drawing.Size(180, 22);
+            this.최소화ToolStripMenuItem.Text = "최소화";
+            this.최소화ToolStripMenuItem.Click += new System.EventHandler(this.최소화ToolStripMenuItem_Click);
+            // 
+            // 종료ToolStripMenuItem
+            // 
+            this.종료ToolStripMenuItem.Name = "종료ToolStripMenuItem";
+            this.종료ToolStripMenuItem.Size = new System.Drawing.Size(180, 22);
+            this.종료ToolStripMenuItem.Text = "종료 (Esc)";
+            this.종료ToolStripMenuItem.Click += new System.EventHandler(this.종료ToolStripMenuItem_Click);
+            // 
+            // 시작끝ToolStripMenuItem
+            // 
+            this.시작끝ToolStripMenuItem.Name = "시작끝ToolStripMenuItem";
+            this.시작끝ToolStripMenuItem.Size = new System.Drawing.Size(180, 22);
+            this.시작끝ToolStripMenuItem.Text = "시작 <-> 끝";
+            this.시작끝ToolStripMenuItem.Click += new System.EventHandler(this.시작끝ToolStripMenuItem_Click);
             // 
             // closeBtn
             // 
@@ -145,6 +172,9 @@ namespace StudyLog
         private System.Windows.Forms.ContextMenuStrip contextMenuStrip1;
         private System.Windows.Forms.ToolStripMenuItem 파일경로ToolStripMenuItem;
         private System.Windows.Forms.Button closeBtn;
+        private System.Windows.Forms.ToolStripMenuItem 최소화ToolStripMenuItem;
+        private System.Windows.Forms.ToolStripMenuItem 종료ToolStripMenuItem;
+        private System.Windows.Forms.ToolStripMenuItem 시작끝ToolStripMenuItem;
     }
 }
 

@@ -48,23 +48,7 @@ namespace StudyLog
 
             if (e.Button == MouseButtons.Left)
             {
-                isStudying = !isStudying;
-                if (isStudying)
-                {
-                    this.studyBtn.TextString = "공부 끝";
-                    this.studyBtn.EndColor = Color.SkyBlue;
-                    this.studyBtn.TextColor = Color.Black;
-                    this.studyBtn.Refresh();
-                    AddLog(MessageType.start, DateTime.Now.ToString("D"));
-                }
-                else
-                {
-                    this.studyBtn.TextString = "공부 시작";
-                    this.studyBtn.EndColor = Color.Transparent;
-                    this.studyBtn.TextColor = Color.Black;
-                    this.studyBtn.Refresh();
-                    AddLog(MessageType.finish, DateTime.Now.ToString("D"));
-                }
+                ChangeTxtCondition(true);   // isStudying을 바꾸고, AddLog를 기록한다.
             }
         }
 
@@ -165,8 +149,40 @@ namespace StudyLog
             this.Close();
         }
 
+        private void 최소화ToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            this.WindowState = FormWindowState.Minimized;
+        }
 
+        private void 종료ToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            this.Close();
+        }
 
+        private void 시작끝ToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            ChangeTxtCondition(false);
+        }
 
+        private void ChangeTxtCondition(bool writeLog = false)
+        {
+            isStudying = !isStudying;
+            if (isStudying)
+            {
+                this.studyBtn.TextString = "공부 끝";
+                this.studyBtn.EndColor = Color.SkyBlue;
+                this.studyBtn.TextColor = Color.Black;
+                this.studyBtn.Refresh();
+                if(writeLog) AddLog(MessageType.start, DateTime.Now.ToString("D"));
+            }
+            else
+            {
+                this.studyBtn.TextString = "공부 시작";
+                this.studyBtn.EndColor = Color.Transparent;
+                this.studyBtn.TextColor = Color.Black;
+                this.studyBtn.Refresh();
+                if(writeLog) AddLog(MessageType.finish, DateTime.Now.ToString("D"));
+            }
+        }
     }
 }

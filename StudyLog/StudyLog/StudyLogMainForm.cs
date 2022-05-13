@@ -31,6 +31,8 @@ namespace StudyLog
             // 폼이 로드될 때 구역(region)을 다시 설정.
             SetClientRegion();
             optionFormArgs = new OptionFormArgs();
+            this.isStudying = Properties.Settings.Default.MessageType == 1 ? true : false;
+            SetBtnCondition(isStudying);
         }
 
 
@@ -48,7 +50,7 @@ namespace StudyLog
 
             if (e.Button == MouseButtons.Left)
             {
-                ChangeTxtCondition(true);   // isStudying을 바꾸고, AddLog를 기록한다.
+                ChangeTxtCondition(true);   // isStudying을 바꾸고, AddLog를 기록한 후, 최소화
             }
         }
 
@@ -164,25 +166,63 @@ namespace StudyLog
             ChangeTxtCondition(false);
         }
 
+        // 로그를 기록하면서(프로그램을 최소화 / 종료) 글자를 변경하거나, 글자만 변경한다.
         private void ChangeTxtCondition(bool writeLog = false)
         {
             isStudying = !isStudying;
+            SetBtnCondition(isStudying);
+            if(writeLog)
+            {
+                if(isStudying)
+                    AddLog(MessageType.start, DateTime.Now.ToString("D"));
+                else
+                    AddLog(MessageType.finish, DateTime.Now.ToString("D"));
+
+                if (Properties.Settings.Default.ExitAfterWrite == true) this.Close();
+                this.WindowState = FormWindowState.Minimized;
+            }
+        }
+
+        private void SetBtnCondition(bool isStudying)
+        {
             if (isStudying)
             {
                 this.studyBtn.TextString = "공부 끝";
                 this.studyBtn.EndColor = Color.SkyBlue;
                 this.studyBtn.TextColor = Color.Black;
-                this.studyBtn.Refresh();
-                if(writeLog) AddLog(MessageType.start, DateTime.Now.ToString("D"));
             }
             else
             {
                 this.studyBtn.TextString = "공부 시작";
                 this.studyBtn.EndColor = Color.Transparent;
                 this.studyBtn.TextColor = Color.Black;
-                this.studyBtn.Refresh();
-                if(writeLog) AddLog(MessageType.finish, DateTime.Now.ToString("D"));
             }
+            this.studyBtn.Refresh();
+        }
+
+        private void StudyLogMainForm_FormClosing(object sender, FormClosingEventArgs e)
+        {
+            Properties.Settings.Default.MessageType = isStudying ? 1 : 0;
+            Properties.Settings.Default.Save();
+        }
+
+        private void 기록후종료여부ToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            (new CustomMessageBox()).ShowDialog();
+            
+            // 폼의 위치가 가운데가 아니므로, 주석처리하고, 커스텀 폼을 띄움.
+            //DialogResult dr = MessageBox.Show("기록후 프로그램을 최소화 하지 않고, 종료 할까요? (예는 종료, 아니오는 최소화", "기록후 종료 여부", MessageBoxButtons.YesNoCancel, MessageBoxIcon.Question, MessageBoxDefaultButton.Button1, MessageBoxOptions.DefaultDesktopOnly);
+            //if(dr == DialogResult.Yes)
+            //{
+            //    Properties.Settings.Default.ExitAfterWrite = true;
+            //    Properties.Settings.Default.Save();
+            //}
+            //else if(dr == DialogResult.No)
+            //{
+            //    Properties.Settings.Default.ExitAfterWrite = false;
+            //    Properties.Settings.Default.Save();
+            //}
+
         }
     }
 }

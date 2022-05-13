@@ -31,13 +31,14 @@ namespace StudyLog
         {
             this.components = new System.ComponentModel.Container();
             this.contextMenuStrip1 = new System.Windows.Forms.ContextMenuStrip(this.components);
+            this.시작끝ToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.파일경로ToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.최소화ToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.종료ToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
-            this.시작끝ToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.closeBtn = new System.Windows.Forms.Button();
             this.shadowPanel1 = new CustomControls_dll.ShadowPanel();
             this.studyBtn = new CustomControls_dll.ShadowPanel();
+            this.기록후종료여부ToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.contextMenuStrip1.SuspendLayout();
             this.shadowPanel1.SuspendLayout();
             this.SuspendLayout();
@@ -48,37 +49,38 @@ namespace StudyLog
             this.시작끝ToolStripMenuItem,
             this.파일경로ToolStripMenuItem,
             this.최소화ToolStripMenuItem,
-            this.종료ToolStripMenuItem});
+            this.종료ToolStripMenuItem,
+            this.기록후종료여부ToolStripMenuItem});
             this.contextMenuStrip1.Name = "contextMenuStrip1";
-            this.contextMenuStrip1.Size = new System.Drawing.Size(181, 114);
+            this.contextMenuStrip1.Size = new System.Drawing.Size(199, 136);
+            // 
+            // 시작끝ToolStripMenuItem
+            // 
+            this.시작끝ToolStripMenuItem.Name = "시작끝ToolStripMenuItem";
+            this.시작끝ToolStripMenuItem.Size = new System.Drawing.Size(139, 22);
+            this.시작끝ToolStripMenuItem.Text = "시작 <-> 끝";
+            this.시작끝ToolStripMenuItem.Click += new System.EventHandler(this.시작끝ToolStripMenuItem_Click);
             // 
             // 파일경로ToolStripMenuItem
             // 
             this.파일경로ToolStripMenuItem.Name = "파일경로ToolStripMenuItem";
-            this.파일경로ToolStripMenuItem.Size = new System.Drawing.Size(180, 22);
+            this.파일경로ToolStripMenuItem.Size = new System.Drawing.Size(139, 22);
             this.파일경로ToolStripMenuItem.Text = "파일 경로";
             this.파일경로ToolStripMenuItem.Click += new System.EventHandler(this.파일경로ToolStripMenuItem_Click);
             // 
             // 최소화ToolStripMenuItem
             // 
             this.최소화ToolStripMenuItem.Name = "최소화ToolStripMenuItem";
-            this.최소화ToolStripMenuItem.Size = new System.Drawing.Size(180, 22);
+            this.최소화ToolStripMenuItem.Size = new System.Drawing.Size(139, 22);
             this.최소화ToolStripMenuItem.Text = "최소화";
             this.최소화ToolStripMenuItem.Click += new System.EventHandler(this.최소화ToolStripMenuItem_Click);
             // 
             // 종료ToolStripMenuItem
             // 
             this.종료ToolStripMenuItem.Name = "종료ToolStripMenuItem";
-            this.종료ToolStripMenuItem.Size = new System.Drawing.Size(180, 22);
+            this.종료ToolStripMenuItem.Size = new System.Drawing.Size(139, 22);
             this.종료ToolStripMenuItem.Text = "종료 (Esc)";
             this.종료ToolStripMenuItem.Click += new System.EventHandler(this.종료ToolStripMenuItem_Click);
-            // 
-            // 시작끝ToolStripMenuItem
-            // 
-            this.시작끝ToolStripMenuItem.Name = "시작끝ToolStripMenuItem";
-            this.시작끝ToolStripMenuItem.Size = new System.Drawing.Size(180, 22);
-            this.시작끝ToolStripMenuItem.Text = "시작 <-> 끝";
-            this.시작끝ToolStripMenuItem.Click += new System.EventHandler(this.시작끝ToolStripMenuItem_Click);
             // 
             // closeBtn
             // 
@@ -137,7 +139,7 @@ namespace StudyLog
             this.studyBtn.ShadowColor = System.Drawing.Color.DimGray;
             this.studyBtn.ShadowShift = 20;
             this.studyBtn.ShadowStyle = CustomControls_dll.ShadowMode.ForwardDiagonal;
-            this.studyBtn.Size = new System.Drawing.Size(151, 89);
+            this.studyBtn.Size = new System.Drawing.Size(151, 90);
             this.studyBtn.StartColor = System.Drawing.Color.White;
             this.studyBtn.Style = CustomControls_dll.BevelStyle.Raised;
             this.studyBtn.TabIndex = 0;
@@ -146,6 +148,13 @@ namespace StudyLog
             this.studyBtn.MouseDown += new System.Windows.Forms.MouseEventHandler(this.studyBtnAndPanel_MouseDown);
             this.studyBtn.MouseMove += new System.Windows.Forms.MouseEventHandler(this.studyBtnAndPanel_MouseMove);
             this.studyBtn.MouseUp += new System.Windows.Forms.MouseEventHandler(this.studyBtn_MouseUp);
+            // 
+            // 기록후종료여부ToolStripMenuItem
+            // 
+            this.기록후종료여부ToolStripMenuItem.Name = "기록후종료여부ToolStripMenuItem";
+            this.기록후종료여부ToolStripMenuItem.Size = new System.Drawing.Size(198, 22);
+            this.기록후종료여부ToolStripMenuItem.Text = "기록 후 종료 여부 설정";
+            this.기록후종료여부ToolStripMenuItem.Click += new System.EventHandler(this.기록후종료여부ToolStripMenuItem_Click);
             // 
             // StudyLogMainForm
             // 
@@ -158,6 +167,7 @@ namespace StudyLog
             this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.None;
             this.Name = "StudyLogMainForm";
             this.Text = "StudyLog";
+            this.FormClosing += new System.Windows.Forms.FormClosingEventHandler(this.StudyLogMainForm_FormClosing);
             this.Load += new System.EventHandler(this.StudyLogMainForm_Load);
             this.contextMenuStrip1.ResumeLayout(false);
             this.shadowPanel1.ResumeLayout(false);
@@ -175,6 +185,7 @@ namespace StudyLog
         private System.Windows.Forms.ToolStripMenuItem 최소화ToolStripMenuItem;
         private System.Windows.Forms.ToolStripMenuItem 종료ToolStripMenuItem;
         private System.Windows.Forms.ToolStripMenuItem 시작끝ToolStripMenuItem;
+        private System.Windows.Forms.ToolStripMenuItem 기록후종료여부ToolStripMenuItem;
     }
 }
 

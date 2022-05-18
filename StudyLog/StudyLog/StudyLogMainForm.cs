@@ -59,16 +59,19 @@ namespace StudyLog
             //string logDir = Path.Combine(optionFormArgs.filepath);
             //string logFile = Path.Combine(logDir, optionFormArgs.filename);
             
-            string fullpath = optionFormArgs.filepath + "\\" + optionFormArgs.filename;
+            string fullPath = optionFormArgs.filepath + "\\" + optionFormArgs.filename;
 
             try
             {
-                using (StreamWriter sw = new StreamWriter(fullpath,true))   // TextWriter tw = new StreamWriter(fullpath, true); 후 tw.WriteLine("some text"); tw.Close()로도 사용 가능.
+                using (StreamWriter sw = new StreamWriter(fullPath,true))   // TextWriter tw = new StreamWriter(fullpath, true); 후 tw.WriteLine("some text"); tw.Close()로도 사용 가능.
                 {
                     if (type == MessageType.start)
                         sw.WriteLine(string.Format("공부 시작 {0} {1}", DateTime.Now.ToString("t"), message));
                     else
+                    {
                         sw.WriteLine(string.Format("공부   끝 {0} {1}", DateTime.Now.ToString("t"), message));
+                        ShowFileOnNotePad(fullPath);
+                    }
                 }
             }
             catch(Exception ex)
@@ -83,6 +86,13 @@ namespace StudyLog
             finish
         }
 
+        private void ShowFileOnNotePad(string fullPath)
+        {
+            System.Diagnostics.Process notePad = new System.Diagnostics.Process();
+            notePad.StartInfo.FileName = "notepad.exe";
+            notePad.StartInfo.Arguments = fullPath;
+            notePad.Start();
+        }
 
 
         private void mainPanel_MouseUp(object sender, MouseEventArgs e)

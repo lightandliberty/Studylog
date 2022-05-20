@@ -70,7 +70,7 @@ namespace StudyLog
                     else
                     {
                         sw.WriteLine(string.Format("공부   끝 {0} {1}", DateTime.Now.ToString("t"), message));
-                        ShowFileOnNotePad(fullPath);
+                        (new System.Threading.Thread(ShowFileOnNotePad)).Start();
                     }
                 }
             }
@@ -86,8 +86,9 @@ namespace StudyLog
             finish
         }
 
-        private void ShowFileOnNotePad(string fullPath)
+        private void ShowFileOnNotePad()
         {
+            string fullPath = optionFormArgs.filepath + "\\" + optionFormArgs.filename;
             System.Diagnostics.Process notePad = new System.Diagnostics.Process();
             notePad.StartInfo.FileName = "notepad.exe";
             notePad.StartInfo.Arguments = fullPath;

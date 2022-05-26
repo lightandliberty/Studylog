@@ -141,6 +141,7 @@ namespace StudyLog.Server
             this.Controls.Add(this.closeBtn);
             this.Controls.Add(this.shadowPanel1);
             this.Name = "HostForm";
+            this.StartPosition = System.Windows.Forms.FormStartPosition.CenterParent;
             this.Text = "HostForm";
             this.FormClosing += new System.Windows.Forms.FormClosingEventHandler(this.HostForm_FormClosing);
             this.Load += new System.EventHandler(this.HostForm_Load);

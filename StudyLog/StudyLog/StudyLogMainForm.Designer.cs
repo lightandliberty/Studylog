@@ -36,11 +36,11 @@ namespace StudyLog
             this.최소화ToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.종료ToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.기록후종료여부ToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.호스트열기ToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.호스트에접속ToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.closeBtn = new System.Windows.Forms.Button();
             this.shadowPanel1 = new CustomControls_dll.ShadowPanel();
             this.studyBtn = new CustomControls_dll.ShadowPanel();
-            this.호스트열기ToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
-            this.호스트에접속ToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.contextMenuStrip1.SuspendLayout();
             this.shadowPanel1.SuspendLayout();
             this.SuspendLayout();
@@ -93,6 +93,20 @@ namespace StudyLog
             this.기록후종료여부ToolStripMenuItem.Text = "기록 후 종료 여부 설정";
             this.기록후종료여부ToolStripMenuItem.Click += new System.EventHandler(this.기록후종료여부ToolStripMenuItem_Click);
             // 
+            // 호스트열기ToolStripMenuItem
+            // 
+            this.호스트열기ToolStripMenuItem.Name = "호스트열기ToolStripMenuItem";
+            this.호스트열기ToolStripMenuItem.Size = new System.Drawing.Size(198, 22);
+            this.호스트열기ToolStripMenuItem.Text = "호스트 열기";
+            this.호스트열기ToolStripMenuItem.Click += new System.EventHandler(this.호스트열기ToolStripMenuItem_Click);
+            // 
+            // 호스트에접속ToolStripMenuItem
+            // 
+            this.호스트에접속ToolStripMenuItem.Name = "호스트에접속ToolStripMenuItem";
+            this.호스트에접속ToolStripMenuItem.Size = new System.Drawing.Size(198, 22);
+            this.호스트에접속ToolStripMenuItem.Text = "호스트에 접속";
+            this.호스트에접속ToolStripMenuItem.Click += new System.EventHandler(this.호스트에접속ToolStripMenuItem_Click);
+            // 
             // closeBtn
             // 
             this.closeBtn.DialogResult = System.Windows.Forms.DialogResult.Cancel;
@@ -107,6 +121,7 @@ namespace StudyLog
             // shadowPanel1
             // 
             this.shadowPanel1.BackgroundGradientMode = CustomControls_dll.PanelGradientMode.Vertical;
+            this.shadowPanel1.ContextMenuStrip = this.contextMenuStrip1;
             this.shadowPanel1.Controls.Add(this.closeBtn);
             this.shadowPanel1.Controls.Add(this.studyBtn);
             this.shadowPanel1.Dock = System.Windows.Forms.DockStyle.Fill;
@@ -160,20 +175,6 @@ namespace StudyLog
             this.studyBtn.MouseMove += new System.Windows.Forms.MouseEventHandler(this.studyBtnAndPanel_MouseMove);
             this.studyBtn.MouseUp += new System.Windows.Forms.MouseEventHandler(this.studyBtn_MouseUp);
             // 
-            // 호스트열기ToolStripMenuItem
-            // 
-            this.호스트열기ToolStripMenuItem.Name = "호스트열기ToolStripMenuItem";
-            this.호스트열기ToolStripMenuItem.Size = new System.Drawing.Size(198, 22);
-            this.호스트열기ToolStripMenuItem.Text = "호스트 열기";
-            this.호스트열기ToolStripMenuItem.Click += new System.EventHandler(this.호스트열기ToolStripMenuItem_Click);
-            // 
-            // 호스트에접속ToolStripMenuItem
-            // 
-            this.호스트에접속ToolStripMenuItem.Name = "호스트에접속ToolStripMenuItem";
-            this.호스트에접속ToolStripMenuItem.Size = new System.Drawing.Size(198, 22);
-            this.호스트에접속ToolStripMenuItem.Text = "호스트에 접속";
-            this.호스트에접속ToolStripMenuItem.Click += new System.EventHandler(this.호스트에접속ToolStripMenuItem_Click);
-            // 
             // StudyLogMainForm
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(7F, 12F);
@@ -184,6 +185,7 @@ namespace StudyLog
             this.Controls.Add(this.shadowPanel1);
             this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.None;
             this.Name = "StudyLogMainForm";
+            this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
             this.Text = "StudyLog";
             this.FormClosing += new System.Windows.Forms.FormClosingEventHandler(this.StudyLogMainForm_FormClosing);
             this.Load += new System.EventHandler(this.StudyLogMainForm_Load);

@@ -1,4 +1,5 @@
 ﻿using System;
+using System.Net;
 using System.Collections.Generic;
 using System.ComponentModel;
 using System.Data;
@@ -8,6 +9,7 @@ using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
 using FreeNet;
+using System.Net.Sockets;
 
 namespace StudyLog.Server
 {
@@ -16,6 +18,8 @@ namespace StudyLog.Server
         static List<CUser> userList;
         public bool isHost = false;
         CNetworkService service;
+        string ipAddress;
+        string port = ", 7979";
         public HostForm()
         {
             InitializeComponent();
@@ -24,6 +28,8 @@ namespace StudyLog.Server
         private void HostForm_Load(object sender, EventArgs e)
         {
             HostInit();
+//            ipAddress = GetIPAddress();
+            ipAddress = GetIPAddress_FromUDPEndpoint() + ", 7979";
         }
 
         private void hostPN_Click(object sender, EventArgs e)
@@ -33,6 +39,31 @@ namespace StudyLog.Server
                 HostOn();
             else
                 HostOff();
+        }
+
+        private string GetIPAddress()
+        {
+            IPHostEntry hostEntry = Dns.GetHostEntry(Dns.GetHostName());
+            for(int i = 0; i < hostEntry.AddressList.Length; i++)
+            {
+                if (hostEntry.AddressList[i].AddressFamily != System.Net.Sockets.AddressFamily.InterNetwork)  // ipv6는 System.Net.Sockets.AddressFamily.InterNetworkV6 사용
+                    continue;
+                else
+                    return hostEntry.AddressList[i].ToString();
+            }
+            return "";
+        }
+
+        private string GetIPAddress_FromUDPEndpoint()
+        {
+            string localIP = string.Empty;
+            using (Socket socket = new Socket(AddressFamily.InterNetwork, SocketType.Dgram, ProtocolType.IP))
+            {
+                socket.Connect("8.8.8.8", 65530);
+                IPEndPoint endPoint = socket.LocalEndPoint as IPEndPoint;
+                localIP = endPoint.Address.ToString();
+            }
+            return localIP;
         }
 
         private void HostInit()
@@ -50,18 +81,19 @@ namespace StudyLog.Server
         {
             // IPAddress.Any와 7979포트로 접속 받아들임.
             service.Listen("0.0.0.0", 7979, 100);
-            this.hostPN.TextString = "호스트\r\n접속 받는 중";
+            this.hostPN.TextString = "호스트\r\n" + ipAddress;
 
         }
 
         private void HostOff()
         {
-            lock (userList)
-            {
-                userList.ForEach(user => userList.Remove(user));
-            }
-            service.ListenStop();
-            this.hostPN.TextString = "호스트\r\n접속 받기";
+                service.ListenStop();
+                lock (userList)
+                {
+                    userList.ForEach(user => userList.Remove(user));
+                }
+                this.hostPN.TextString = "호스트\r\n접속 받기";
+                this.hostPN.Refresh();
         }
 
         /// <summary>
@@ -90,11 +122,12 @@ namespace StudyLog.Server
 
         private void HostForm_FormClosing(object sender, FormClosingEventArgs e)
         {
-            lock(userList)
-            {
-                userList.ForEach(user => userList.Remove(user));
-            }
-            HostOff();
+            if (isHost) // 호스트를 연 상태면, 닫음.
+                HostOff();
+            //lock(userList)
+            //{
+            //    userList.ForEach(user => userList.Remove(user));
+            //}
         }
     }
 }

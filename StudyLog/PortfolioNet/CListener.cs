@@ -29,7 +29,7 @@ namespace FreeNet
 
         public void Start(string host, int port, int backLog)
         {
-            isListen = true;
+            isListen = true;    // 기본적으로 계속 반복해서 접속을 받도록 설정.
             this.listen_socket = new Socket(AddressFamily.InterNetwork, SocketType.Stream, ProtocolType.Tcp);
 
             IPAddress address;
@@ -61,22 +61,25 @@ namespace FreeNet
             }
         }
 
-        public bool isListen = true;
+
+        public bool isListen = true; // 계속 반복해서 접속을 받을 지, 반복을 중단할 지 여부
 
         public void Stop()
         {
             isListen = false;
             try 
             {
+                // 연결된 상태면, 소켓 정송/수신을 완료함.
                 if(listen_socket.Connected)
                 // 닫기 전에 연결된 소켓에서 전송되고, 수신됨.
                     listen_socket.Shutdown(SocketShutdown.Both);
             }
             finally
             {
-//                listen_socket.Disconnect(false);    // 소켓 연결을 닫고,false일 경우, 소켓의 리소스를 해제. 아니면 소켓을 다시 사용할 수 있도록 함.
-                //// 연결을 닫고, 연결된 리소스를 모두 해제
-                listen_socket.Close();
+                if(listen_socket.Connected)
+                    listen_socket.Disconnect(false);    // 소켓 연결을 닫고,false일 경우, 소켓의 리소스를 해제. 아니면 소켓을 다시 사용할 수 있도록 함.
+                //// 연결을 닫고, 연결된 리소스를 모두 해제. Disconnect로 하니까, 연결이 안 되어 있을 경우, 오류나는 듯.
+                listen_socket.Close();  // 오류 나면, 위의 Disconnect(false)를 제거하거나, 이걸 제거하면 될 듯.
             }
         }
 

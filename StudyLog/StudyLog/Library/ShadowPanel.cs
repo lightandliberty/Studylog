@@ -16,7 +16,7 @@ using System.Runtime.InteropServices;   // [DllImport("shlwapi.dll")] 사용을 
 
 namespace CustomControls_dll
 {
-
+    [DefaultEvent("Click")]
     public class ShadowPanel : Panel, IShadowBtn
     {
         #region 멤버

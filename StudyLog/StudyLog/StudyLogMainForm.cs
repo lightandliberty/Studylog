@@ -235,5 +235,16 @@ namespace StudyLog
             //}
 
         }
+
+        private void 호스트열기ToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            (new StudyLog.Server.HostForm()).ShowDialog();
+        }
+
+        private void 호스트에접속ToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+
+        }
+
     }
 }

@@ -289,7 +289,7 @@ namespace CustomControls_dll
             // 버튼의 글자를 그림
             g.DrawString(this.mTextStr,
                 new Font(this.Font.Name, this.Font.Size), new SolidBrush(mTextColor),
-                bevelRect,
+                new Rectangle(bevelRect.X, bevelRect.Y, bevelRect.Width + 2, bevelRect.Height + 4),
                 sf);
 
         }

@@ -23,4 +23,15 @@ namespace StudyLog.Library
     public class Common
     {
     }
+
+    public class SettingFormArgs
+    {
+        public string hostIP;
+
+        public SettingFormArgs()
+        {
+            hostIP = StudyLog.Properties.Settings.Default.hostIP;
+        }
+    }
+
 }

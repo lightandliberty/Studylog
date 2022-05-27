@@ -68,7 +68,7 @@ namespace StudyLog.Server
             this.shadowPanel1.ShadowColor = System.Drawing.Color.DimGray;
             this.shadowPanel1.ShadowShift = 0;
             this.shadowPanel1.ShadowStyle = CustomControls_dll.ShadowMode.ForwardDiagonal;
-            this.shadowPanel1.Size = new System.Drawing.Size(421, 450);
+            this.shadowPanel1.Size = new System.Drawing.Size(434, 411);
             this.shadowPanel1.StartColor = System.Drawing.Color.White;
             this.shadowPanel1.Style = CustomControls_dll.BevelStyle.Flat;
             this.shadowPanel1.TabIndex = 4;
@@ -137,7 +137,7 @@ namespace StudyLog.Server
             this.AutoScaleDimensions = new System.Drawing.SizeF(7F, 12F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.CancelButton = this.closeBtn;
-            this.ClientSize = new System.Drawing.Size(421, 450);
+            this.ClientSize = new System.Drawing.Size(434, 411);
             this.Controls.Add(this.closeBtn);
             this.Controls.Add(this.shadowPanel1);
             this.Name = "HostForm";

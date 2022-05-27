@@ -18,10 +18,10 @@ namespace StudyLog
             InitializeComponent();
         }
 
-        public OptionFormArgs optionFormArgs;
         public delegate void GetArgs(OptionFormArgs s);
-
         public GetArgs GetOptionFormArgs;  // 대리자 객체 생성
+
+        public OptionFormArgs optionFormArgs;
 
         // 객체 초기화
         private void OptionForm_Load(object sender, EventArgs e)

@@ -46,5 +46,17 @@ namespace StudyLog.Properties {
                 this["ExitAfterWrite"] = value;
             }
         }
+        
+        [global::System.Configuration.UserScopedSettingAttribute()]
+        [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+        [global::System.Configuration.DefaultSettingValueAttribute("")]
+        public string hostIP {
+            get {
+                return ((string)(this["hostIP"]));
+            }
+            set {
+                this["hostIP"] = value;
+            }
+        }
     }
 }

@@ -243,7 +243,7 @@ namespace StudyLog
 
         private void 호스트에접속ToolStripMenuItem_Click(object sender, EventArgs e)
         {
-
+            (new StudyLog.Client.ClientForm()).ShowDialog();
         }
 
     }

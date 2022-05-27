@@ -31,8 +31,8 @@ namespace StudyLog.Server
         {
             this.closeBtn = new System.Windows.Forms.Button();
             this.shadowPanel1 = new CustomControls_dll.ShadowPanel();
-            this.label2 = new System.Windows.Forms.Label();
-            this.label1 = new System.Windows.Forms.Label();
+            this.client2MsgLbl = new System.Windows.Forms.Label();
+            this.client1MsgLbl = new System.Windows.Forms.Label();
             this.button1 = new System.Windows.Forms.Button();
             this.hostPN = new CustomControls_dll.ShadowPanel();
             this.shadowPanel1.SuspendLayout();
@@ -51,8 +51,8 @@ namespace StudyLog.Server
             // shadowPanel1
             // 
             this.shadowPanel1.BackgroundGradientMode = CustomControls_dll.PanelGradientMode.Vertical;
-            this.shadowPanel1.Controls.Add(this.label2);
-            this.shadowPanel1.Controls.Add(this.label1);
+            this.shadowPanel1.Controls.Add(this.client2MsgLbl);
+            this.shadowPanel1.Controls.Add(this.client1MsgLbl);
             this.shadowPanel1.Controls.Add(this.button1);
             this.shadowPanel1.Controls.Add(this.hostPN);
             this.shadowPanel1.Dock = System.Windows.Forms.DockStyle.Fill;
@@ -75,27 +75,27 @@ namespace StudyLog.Server
             this.shadowPanel1.TextColor = System.Drawing.Color.FromArgb(((int)(((byte)(58)))), ((int)(((byte)(32)))), ((int)(((byte)(51)))));
             this.shadowPanel1.TextString = "";
             // 
-            // label2
+            // client2MsgLbl
             // 
-            this.label2.AutoSize = true;
-            this.label2.BackColor = System.Drawing.Color.Transparent;
-            this.label2.Font = new System.Drawing.Font("굴림", 14F);
-            this.label2.Location = new System.Drawing.Point(39, 218);
-            this.label2.Name = "label2";
-            this.label2.Size = new System.Drawing.Size(55, 19);
-            this.label2.TabIndex = 3;
-            this.label2.Text = "label2";
+            this.client2MsgLbl.AutoSize = true;
+            this.client2MsgLbl.BackColor = System.Drawing.Color.Transparent;
+            this.client2MsgLbl.Font = new System.Drawing.Font("굴림", 14F);
+            this.client2MsgLbl.Location = new System.Drawing.Point(247, 125);
+            this.client2MsgLbl.Name = "client2MsgLbl";
+            this.client2MsgLbl.Size = new System.Drawing.Size(117, 19);
+            this.client2MsgLbl.TabIndex = 3;
+            this.client2MsgLbl.Text = "client2MsgLbl";
             // 
-            // label1
+            // client1MsgLbl
             // 
-            this.label1.AutoSize = true;
-            this.label1.BackColor = System.Drawing.Color.Transparent;
-            this.label1.Font = new System.Drawing.Font("굴림", 14F);
-            this.label1.Location = new System.Drawing.Point(39, 157);
-            this.label1.Name = "label1";
-            this.label1.Size = new System.Drawing.Size(55, 19);
-            this.label1.TabIndex = 2;
-            this.label1.Text = "label1";
+            this.client1MsgLbl.AutoSize = true;
+            this.client1MsgLbl.BackColor = System.Drawing.Color.Transparent;
+            this.client1MsgLbl.Font = new System.Drawing.Font("굴림", 14F);
+            this.client1MsgLbl.Location = new System.Drawing.Point(32, 125);
+            this.client1MsgLbl.Name = "client1MsgLbl";
+            this.client1MsgLbl.Size = new System.Drawing.Size(117, 19);
+            this.client1MsgLbl.TabIndex = 2;
+            this.client1MsgLbl.Text = "client1MsgLbl";
             // 
             // button1
             // 
@@ -157,7 +157,7 @@ namespace StudyLog.Server
         private CustomControls_dll.ShadowPanel hostPN;
         private System.Windows.Forms.Button button1;
         private CustomControls_dll.ShadowPanel shadowPanel1;
-        private System.Windows.Forms.Label label2;
-        private System.Windows.Forms.Label label1;
+        private System.Windows.Forms.Label client2MsgLbl;
+        private System.Windows.Forms.Label client1MsgLbl;
     }
 }

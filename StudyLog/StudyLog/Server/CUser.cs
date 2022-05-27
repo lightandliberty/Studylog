@@ -15,6 +15,11 @@ namespace StudyLog
     /// </summary>
     public class CUser : IPeer
     {
+        // Server폼에 있는 컨트롤을 바꾸기 위한 대리자
+        public delegate void OnMessageHandler(string str);
+        public OnMessageHandler OnMessage;
+
+
         CUserToken token;
 
         // 매개변수의 token을 설정하고, IPeer객체에 메서드를 등록
@@ -38,9 +43,13 @@ namespace StudyLog
                         string text = msg.Pop_String();
                         Console.WriteLine(string.Format("text {0}", text));
 
-                        CPacket response = CPacket.Create((short)PROTOCOL.CHAT_MSG_ACK);
-                        response.Push(text);
-                        Send(response);
+                        //CPacket response = CPacket.Create((short)PROTOCOL.CHAT_MSG_ACK);
+                        //response.Push(text);
+                        //Send(response);
+
+                        // 서버에 있는 컨트롤에도 받은 문자열을 표시하기 위해
+                        if (OnMessage != null)
+                            OnMessage(text);    // 추가로 실행하고 싶은 메서드를 등록.
                     }
                     break;
             }

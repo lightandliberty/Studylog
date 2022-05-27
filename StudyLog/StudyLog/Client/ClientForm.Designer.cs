@@ -32,12 +32,16 @@ namespace StudyLog.Client
             this.components = new System.ComponentModel.Container();
             this.contextMenuStrip1 = new System.Windows.Forms.ContextMenuStrip(this.components);
             this.접속Ip설정ToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
-            this.backGroundPanel = new CustomControls_dll.ShadowPanel();
-            this.changeIPBtn = new CustomControls_dll.ShadowPanel();
-            this.label2 = new System.Windows.Forms.Label();
-            this.label1 = new System.Windows.Forms.Label();
             this.closeBtn = new System.Windows.Forms.Button();
+            this.backGroundPanel = new CustomControls_dll.ShadowPanel();
+            this.writeMsgLbl = new System.Windows.Forms.Label();
+            this.writeMsgTB = new System.Windows.Forms.TextBox();
+            this.changeIPBtn = new CustomControls_dll.ShadowPanel();
+            this.clientMsgLbl = new System.Windows.Forms.Label();
+            this.serverMsgLbl = new System.Windows.Forms.Label();
             this.connectPN = new CustomControls_dll.ShadowPanel();
+            this.nameLbl = new System.Windows.Forms.Label();
+            this.nameTB = new System.Windows.Forms.TextBox();
             this.contextMenuStrip1.SuspendLayout();
             this.backGroundPanel.SuspendLayout();
             this.SuspendLayout();
@@ -56,12 +60,27 @@ namespace StudyLog.Client
             this.접속Ip설정ToolStripMenuItem.Text = "접속 ip설정";
             this.접속Ip설정ToolStripMenuItem.Click += new System.EventHandler(this.접속Ip설정ToolStripMenuItem_Click);
             // 
+            // closeBtn
+            // 
+            this.closeBtn.DialogResult = System.Windows.Forms.DialogResult.Cancel;
+            this.closeBtn.Location = new System.Drawing.Point(26, 108);
+            this.closeBtn.Name = "closeBtn";
+            this.closeBtn.Size = new System.Drawing.Size(0, 0);
+            this.closeBtn.TabIndex = 1;
+            this.closeBtn.Text = "Close";
+            this.closeBtn.UseVisualStyleBackColor = true;
+            this.closeBtn.Click += new System.EventHandler(this.closeBtn_Click);
+            // 
             // backGroundPanel
             // 
             this.backGroundPanel.BackgroundGradientMode = CustomControls_dll.PanelGradientMode.Vertical;
+            this.backGroundPanel.Controls.Add(this.nameLbl);
+            this.backGroundPanel.Controls.Add(this.nameTB);
+            this.backGroundPanel.Controls.Add(this.writeMsgLbl);
+            this.backGroundPanel.Controls.Add(this.writeMsgTB);
             this.backGroundPanel.Controls.Add(this.changeIPBtn);
-            this.backGroundPanel.Controls.Add(this.label2);
-            this.backGroundPanel.Controls.Add(this.label1);
+            this.backGroundPanel.Controls.Add(this.clientMsgLbl);
+            this.backGroundPanel.Controls.Add(this.serverMsgLbl);
             this.backGroundPanel.Controls.Add(this.closeBtn);
             this.backGroundPanel.Controls.Add(this.connectPN);
             this.backGroundPanel.Dock = System.Windows.Forms.DockStyle.Fill;
@@ -83,6 +102,31 @@ namespace StudyLog.Client
             this.backGroundPanel.TabIndex = 5;
             this.backGroundPanel.TextColor = System.Drawing.Color.FromArgb(((int)(((byte)(58)))), ((int)(((byte)(32)))), ((int)(((byte)(51)))));
             this.backGroundPanel.TextString = "";
+            // 
+            // writeMsgLbl
+            // 
+            this.writeMsgLbl.AutoSize = true;
+            this.writeMsgLbl.BackColor = System.Drawing.Color.Transparent;
+            this.writeMsgLbl.Font = new System.Drawing.Font("Arial Rounded MT Bold", 10.75F);
+            this.writeMsgLbl.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(140)))), ((int)(((byte)(147)))), ((int)(((byte)(184)))));
+            this.writeMsgLbl.Location = new System.Drawing.Point(29, 334);
+            this.writeMsgLbl.Name = "writeMsgLbl";
+            this.writeMsgLbl.Size = new System.Drawing.Size(157, 17);
+            this.writeMsgLbl.TabIndex = 12;
+            this.writeMsgLbl.Text = "보낼 문자를 입력해 주세요.";
+            // 
+            // writeMsgTB
+            // 
+            this.writeMsgTB.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(43)))), ((int)(((byte)(52)))), ((int)(((byte)(86)))));
+            this.writeMsgTB.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
+            this.writeMsgTB.Font = new System.Drawing.Font("Arial Rounded MT Bold", 16.25F);
+            this.writeMsgTB.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(227)))), ((int)(((byte)(231)))), ((int)(((byte)(232)))));
+            this.writeMsgTB.Location = new System.Drawing.Point(26, 354);
+            this.writeMsgTB.Multiline = true;
+            this.writeMsgTB.Name = "writeMsgTB";
+            this.writeMsgTB.Size = new System.Drawing.Size(379, 33);
+            this.writeMsgTB.TabIndex = 11;
+            this.writeMsgTB.KeyDown += new System.Windows.Forms.KeyEventHandler(this.writeMsgTB_KeyDown);
             // 
             // changeIPBtn
             // 
@@ -109,38 +153,27 @@ namespace StudyLog.Client
             this.changeIPBtn.TextString = "IP 변경";
             this.changeIPBtn.Click += new System.EventHandler(this.changeIPBtn_Click);
             // 
-            // label2
+            // clientMsgLbl
             // 
-            this.label2.AutoSize = true;
-            this.label2.BackColor = System.Drawing.Color.Transparent;
-            this.label2.Font = new System.Drawing.Font("굴림", 14F);
-            this.label2.Location = new System.Drawing.Point(39, 218);
-            this.label2.Name = "label2";
-            this.label2.Size = new System.Drawing.Size(55, 19);
-            this.label2.TabIndex = 3;
-            this.label2.Text = "label2";
+            this.clientMsgLbl.AutoSize = true;
+            this.clientMsgLbl.BackColor = System.Drawing.Color.Transparent;
+            this.clientMsgLbl.Font = new System.Drawing.Font("굴림", 14F);
+            this.clientMsgLbl.Location = new System.Drawing.Point(228, 127);
+            this.clientMsgLbl.Name = "clientMsgLbl";
+            this.clientMsgLbl.Size = new System.Drawing.Size(107, 19);
+            this.clientMsgLbl.TabIndex = 3;
+            this.clientMsgLbl.Text = "clientMsgLbl";
             // 
-            // label1
+            // serverMsgLbl
             // 
-            this.label1.AutoSize = true;
-            this.label1.BackColor = System.Drawing.Color.Transparent;
-            this.label1.Font = new System.Drawing.Font("굴림", 14F);
-            this.label1.Location = new System.Drawing.Point(39, 157);
-            this.label1.Name = "label1";
-            this.label1.Size = new System.Drawing.Size(55, 19);
-            this.label1.TabIndex = 2;
-            this.label1.Text = "label1";
-            // 
-            // closeBtn
-            // 
-            this.closeBtn.DialogResult = System.Windows.Forms.DialogResult.Cancel;
-            this.closeBtn.Location = new System.Drawing.Point(26, 108);
-            this.closeBtn.Name = "closeBtn";
-            this.closeBtn.Size = new System.Drawing.Size(0, 0);
-            this.closeBtn.TabIndex = 1;
-            this.closeBtn.Text = "Close";
-            this.closeBtn.UseVisualStyleBackColor = true;
-            this.closeBtn.Click += new System.EventHandler(this.closeBtn_Click);
+            this.serverMsgLbl.AutoSize = true;
+            this.serverMsgLbl.BackColor = System.Drawing.Color.Transparent;
+            this.serverMsgLbl.Font = new System.Drawing.Font("굴림", 14F);
+            this.serverMsgLbl.Location = new System.Drawing.Point(22, 127);
+            this.serverMsgLbl.Name = "serverMsgLbl";
+            this.serverMsgLbl.Size = new System.Drawing.Size(118, 19);
+            this.serverMsgLbl.TabIndex = 2;
+            this.serverMsgLbl.Text = "serverMsgLbl";
             // 
             // connectPN
             // 
@@ -166,6 +199,31 @@ namespace StudyLog.Client
             this.connectPN.TabIndex = 0;
             this.connectPN.TextColor = System.Drawing.Color.FromArgb(((int)(((byte)(58)))), ((int)(((byte)(32)))), ((int)(((byte)(51)))));
             this.connectPN.TextString = "호스트\r\n접속";
+            this.connectPN.Click += new System.EventHandler(this.connectPN_Click);
+            // 
+            // nameLbl
+            // 
+            this.nameLbl.AutoSize = true;
+            this.nameLbl.BackColor = System.Drawing.Color.Transparent;
+            this.nameLbl.Font = new System.Drawing.Font("Arial Rounded MT Bold", 10.75F);
+            this.nameLbl.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(140)))), ((int)(((byte)(147)))), ((int)(((byte)(184)))));
+            this.nameLbl.Location = new System.Drawing.Point(293, 12);
+            this.nameLbl.Name = "nameLbl";
+            this.nameLbl.Size = new System.Drawing.Size(129, 17);
+            this.nameLbl.TabIndex = 14;
+            this.nameLbl.Text = "이름을 입력해 주세요.";
+            // 
+            // nameTB
+            // 
+            this.nameTB.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(43)))), ((int)(((byte)(52)))), ((int)(((byte)(86)))));
+            this.nameTB.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
+            this.nameTB.Font = new System.Drawing.Font("Arial Rounded MT Bold", 16.25F);
+            this.nameTB.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(227)))), ((int)(((byte)(231)))), ((int)(((byte)(232)))));
+            this.nameTB.Location = new System.Drawing.Point(290, 32);
+            this.nameTB.Multiline = true;
+            this.nameTB.Name = "nameTB";
+            this.nameTB.Size = new System.Drawing.Size(132, 33);
+            this.nameTB.TabIndex = 13;
             // 
             // ClientForm
             // 
@@ -177,6 +235,7 @@ namespace StudyLog.Client
             this.Name = "ClientForm";
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterParent;
             this.Text = "ClientForm";
+            this.FormClosing += new System.Windows.Forms.FormClosingEventHandler(this.ClientForm_FormClosing);
             this.Load += new System.EventHandler(this.ClientForm_Load);
             this.contextMenuStrip1.ResumeLayout(false);
             this.backGroundPanel.ResumeLayout(false);
@@ -188,12 +247,16 @@ namespace StudyLog.Client
         #endregion
 
         private CustomControls_dll.ShadowPanel backGroundPanel;
-        private System.Windows.Forms.Label label2;
-        private System.Windows.Forms.Label label1;
+        private System.Windows.Forms.Label clientMsgLbl;
+        private System.Windows.Forms.Label serverMsgLbl;
         private System.Windows.Forms.Button closeBtn;
         private CustomControls_dll.ShadowPanel connectPN;
         private System.Windows.Forms.ContextMenuStrip contextMenuStrip1;
         private System.Windows.Forms.ToolStripMenuItem 접속Ip설정ToolStripMenuItem;
         private CustomControls_dll.ShadowPanel changeIPBtn;
+        private System.Windows.Forms.TextBox writeMsgTB;
+        private System.Windows.Forms.Label writeMsgLbl;
+        private System.Windows.Forms.Label nameLbl;
+        private System.Windows.Forms.TextBox nameTB;
     }
 }

@@ -15,7 +15,9 @@ namespace StudyLog.Library
         public OptionFormArgs()
         {
             // filepath = Directory.GetCurrentDirectory();
-            filepath = Environment.GetFolderPath(Environment.SpecialFolder.Desktop) + "\\StudyLog";
+            // 기존 코드 주석 처리
+            //            filepath = StudyLog.Properties.Settings.Default.saveFolder == "" ? Environment.GetFolderPath(Environment.SpecialFolder.Desktop) + "\\StudyLog";
+            filepath = StudyLog.Properties.Settings.Default.saveFolder;
             filename = DateTime.Now.ToString("D") + ".txt";
         }
     }

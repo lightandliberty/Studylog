@@ -55,6 +55,7 @@ namespace StudyLog
             }
         }
 
+
         void IPeer.On_Removed()
         {
             Console.WriteLine("The client disconnected.");

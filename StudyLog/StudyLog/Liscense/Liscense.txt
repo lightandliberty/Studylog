@@ -1,0 +1,5 @@
+Metal button, Shadow panel is Modified Shadow Panel which is liscensed CPOL.
+https://www.codeproject.com/Tips/1200547/Beveled-Panel-with-Shadow-Effect
+Original is Advanced Panel, 
+Metal button and neon button is modified.
+Color, Click Event and so on.

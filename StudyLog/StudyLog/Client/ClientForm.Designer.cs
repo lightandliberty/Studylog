@@ -34,14 +34,14 @@ namespace StudyLog.Client
             this.접속Ip설정ToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.closeBtn = new System.Windows.Forms.Button();
             this.backGroundPanel = new CustomControls_dll.ShadowPanel();
+            this.nameLbl = new System.Windows.Forms.Label();
+            this.nameTB = new System.Windows.Forms.TextBox();
             this.writeMsgLbl = new System.Windows.Forms.Label();
             this.writeMsgTB = new System.Windows.Forms.TextBox();
             this.changeIPBtn = new CustomControls_dll.ShadowPanel();
             this.clientMsgLbl = new System.Windows.Forms.Label();
             this.serverMsgLbl = new System.Windows.Forms.Label();
             this.connectPN = new CustomControls_dll.ShadowPanel();
-            this.nameLbl = new System.Windows.Forms.Label();
-            this.nameTB = new System.Windows.Forms.TextBox();
             this.contextMenuStrip1.SuspendLayout();
             this.backGroundPanel.SuspendLayout();
             this.SuspendLayout();
@@ -103,6 +103,30 @@ namespace StudyLog.Client
             this.backGroundPanel.TextColor = System.Drawing.Color.FromArgb(((int)(((byte)(58)))), ((int)(((byte)(32)))), ((int)(((byte)(51)))));
             this.backGroundPanel.TextString = "";
             // 
+            // nameLbl
+            // 
+            this.nameLbl.AutoSize = true;
+            this.nameLbl.BackColor = System.Drawing.Color.Transparent;
+            this.nameLbl.Font = new System.Drawing.Font("Arial Rounded MT Bold", 10.75F);
+            this.nameLbl.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(140)))), ((int)(((byte)(147)))), ((int)(((byte)(184)))));
+            this.nameLbl.Location = new System.Drawing.Point(293, 12);
+            this.nameLbl.Name = "nameLbl";
+            this.nameLbl.Size = new System.Drawing.Size(129, 17);
+            this.nameLbl.TabIndex = 14;
+            this.nameLbl.Text = "이름을 입력해 주세요.";
+            // 
+            // nameTB
+            // 
+            this.nameTB.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(43)))), ((int)(((byte)(52)))), ((int)(((byte)(86)))));
+            this.nameTB.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
+            this.nameTB.Font = new System.Drawing.Font("Arial Rounded MT Bold", 16.25F);
+            this.nameTB.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(227)))), ((int)(((byte)(231)))), ((int)(((byte)(232)))));
+            this.nameTB.Location = new System.Drawing.Point(290, 32);
+            this.nameTB.Multiline = true;
+            this.nameTB.Name = "nameTB";
+            this.nameTB.Size = new System.Drawing.Size(132, 33);
+            this.nameTB.TabIndex = 13;
+            // 
             // writeMsgLbl
             // 
             this.writeMsgLbl.AutoSize = true;
@@ -160,9 +184,8 @@ namespace StudyLog.Client
             this.clientMsgLbl.Font = new System.Drawing.Font("굴림", 14F);
             this.clientMsgLbl.Location = new System.Drawing.Point(228, 127);
             this.clientMsgLbl.Name = "clientMsgLbl";
-            this.clientMsgLbl.Size = new System.Drawing.Size(107, 19);
+            this.clientMsgLbl.Size = new System.Drawing.Size(0, 19);
             this.clientMsgLbl.TabIndex = 3;
-            this.clientMsgLbl.Text = "clientMsgLbl";
             // 
             // serverMsgLbl
             // 
@@ -200,30 +223,6 @@ namespace StudyLog.Client
             this.connectPN.TextColor = System.Drawing.Color.FromArgb(((int)(((byte)(58)))), ((int)(((byte)(32)))), ((int)(((byte)(51)))));
             this.connectPN.TextString = "호스트\r\n접속";
             this.connectPN.Click += new System.EventHandler(this.connectPN_Click);
-            // 
-            // nameLbl
-            // 
-            this.nameLbl.AutoSize = true;
-            this.nameLbl.BackColor = System.Drawing.Color.Transparent;
-            this.nameLbl.Font = new System.Drawing.Font("Arial Rounded MT Bold", 10.75F);
-            this.nameLbl.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(140)))), ((int)(((byte)(147)))), ((int)(((byte)(184)))));
-            this.nameLbl.Location = new System.Drawing.Point(293, 12);
-            this.nameLbl.Name = "nameLbl";
-            this.nameLbl.Size = new System.Drawing.Size(129, 17);
-            this.nameLbl.TabIndex = 14;
-            this.nameLbl.Text = "이름을 입력해 주세요.";
-            // 
-            // nameTB
-            // 
-            this.nameTB.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(43)))), ((int)(((byte)(52)))), ((int)(((byte)(86)))));
-            this.nameTB.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
-            this.nameTB.Font = new System.Drawing.Font("Arial Rounded MT Bold", 16.25F);
-            this.nameTB.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(227)))), ((int)(((byte)(231)))), ((int)(((byte)(232)))));
-            this.nameTB.Location = new System.Drawing.Point(290, 32);
-            this.nameTB.Multiline = true;
-            this.nameTB.Name = "nameTB";
-            this.nameTB.Size = new System.Drawing.Size(132, 33);
-            this.nameTB.TabIndex = 13;
             // 
             // ClientForm
             // 

@@ -57,7 +57,7 @@ namespace FreeNet
             }
             catch (Exception ex)
             {
-                // Console.WriteLine(e.Message);
+                Console.WriteLine(ex.Message);
             }
         }
 
@@ -107,7 +107,7 @@ namespace FreeNet
                 }
                 catch (Exception e)
                 {
-                    // Console.WriteLine(e.Message);
+                    Console.WriteLine(e.Message);
                     continue;
                 }
 

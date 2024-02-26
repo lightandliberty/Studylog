@@ -175,16 +175,16 @@ namespace FreeNet
                     return BitConverter.ToInt32(this.message_buffer, 0);    // 얼마든지 어차피 배열에 담긴 값은 Int32면 다 담기지 않을까? 나중에 혹시 이걸 실제로 구현한다면 테스트 하겠지.
             }
 
-            #region 원본
-            // 헤더 타입의 바이트만큼을 읽어와 메시지 사이즈를 리턴한다.
-            Type type = Defines.HEADERSIZE.GetType(); // short이므로, Int16이 반환됨.
-            // 코딩 오류가 아닐까? HEADERSIZE = 4일 경우엔, Int32로 변환해야 할 것이다. 4바이트를 읽을 것이므로, 하지만, 본문이 32767바이트 이상일 경우는 없을 듯하므로, Int16만쓰일지도,
-            if (type.Equals(typeof(Int16)))
-            {
-                return BitConverter.ToInt16(this.message_buffer, 0);
-            }
+            #region 원본(오류 수정 전) 백업
+            //// 헤더 타입의 바이트만큼을 읽어와 메시지 사이즈를 리턴한다.
+            //Type type = Defines.HEADERSIZE.GetType(); // short이므로, Int16이 반환됨.
+            //// 코딩 오류가 아닐까? HEADERSIZE = 4일 경우엔, Int32로 변환해야 할 것이다. 4바이트를 읽을 것이므로, 하지만, 본문이 32767바이트 이상일 경우는 없을 듯하므로, Int16만쓰일지도,
+            //if (type.Equals(typeof(Int16)))
+            //{
+            //    return BitConverter.ToInt16(this.message_buffer, 0);
+            //}
 
-            return BitConverter.ToInt16(this.message_buffer, 0);
+            //return BitConverter.ToInt16(this.message_buffer, 0);
             #endregion 원본. 끝.
         }
 

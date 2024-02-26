@@ -18,10 +18,20 @@ namespace StudyLog
     {
         OptionFormArgs optionFormArgs;
         public Point downPoint = Point.Empty;       // 누른 마우스의 좌표
-        
+
         public StudyLogMainForm()
         {
             InitializeComponent();
+
+            #region 호스트 열기를 눌렀을 경우, 클라이언트 폼을 하나 더 실행하도록 함.
+            string[] args = Environment.GetCommandLineArgs();
+            if (args.Length > 1)  // args[0]은 파일 이름
+            {
+                this.WindowState = FormWindowState.Minimized;
+                OpenClientForm();
+                this.Close();   // 추가로 실행된 클라이언트 폼을 닫으면 프로그램 종료됨.
+            }
+            #endregion 호스트 열기를 눌렀을 경우, 클라이언트 폼을 하나 더 실행하도록 함. 끝.
         }
 
 
@@ -63,7 +73,13 @@ namespace StudyLog
 
             try
             {
-                using (StreamWriter sw = new StreamWriter(fullPath,true))   // TextWriter tw = new StreamWriter(fullpath, true); 후 tw.WriteLine("some text"); tw.Close()로도 사용 가능.
+                if(optionFormArgs.filepath == "")
+                {
+                    throw new DirectoryNotFoundException("폴더를 설정해 주세요");
+                }
+
+
+                using (StreamWriter sw = new StreamWriter(fullPath, true))   // TextWriter tw = new StreamWriter(fullpath, true); 후 tw.WriteLine("some text"); tw.Close()로도 사용 가능.
                 {
                     if (type == MessageType.start)
                         sw.WriteLine(string.Format("공부 시작 {0} {1}", DateTime.Now.ToString("t"), message));
@@ -73,10 +89,23 @@ namespace StudyLog
                         (new System.Threading.Thread(ShowFileOnNotePad)).Start();
                     }
                 }
+                // 항상 종료로 바꿈. 예외시 종료하지 않음.
+                this.Close();
+
             }
-            catch(Exception ex)
+            catch (DirectoryNotFoundException d)
+            {
+                MessageBox.Show("저장 폴더를 찾을 수 없습니다. 저장 폴더를 만든 후 경로를 설정해 주세요.");
+                파일경로ToolStripMenuItem_Click(파일경로ToolStripMenuItem, new EventArgs());
+                Console.Write(d.Message);
+                isStudying = !isStudying;
+                SetBtnCondition(isStudying);
+            }
+            catch (Exception ex)
             {
                 MessageBox.Show(ex.ToString());
+                isStudying = !isStudying;
+                SetBtnCondition(isStudying);
             }
         }
 
@@ -122,7 +151,7 @@ namespace StudyLog
                 isMoving = false;
         }
 
-
+        // controlBox를 false로 했을 경우, 위에 흰 줄이 나오는 걸 삭제
         void SetClientRegion()
         {
             // FormBorderStyle속성이 None으로 설정되어 있다고 가정한다.
@@ -189,8 +218,11 @@ namespace StudyLog
                 else
                     AddLog(MessageType.finish, DateTime.Now.ToString("D"));
 
-                if (Properties.Settings.Default.ExitAfterWrite == true) this.Close();
-                this.WindowState = FormWindowState.Minimized;
+                
+                #region 항상 종료로 바꾸기 전 백업
+                //if (Properties.Settings.Default.ExitAfterWrite == true) this.Close();
+                //this.WindowState = FormWindowState.Minimized;
+                #endregion 항상 종료로 바꾸기 전 백업. 끝.
             }
         }
 
@@ -238,13 +270,65 @@ namespace StudyLog
 
         private void 호스트열기ToolStripMenuItem_Click(object sender, EventArgs e)
         {
-            (new StudyLog.Server.HostForm()).ShowDialog();
+            // 클라이언트 프로그램을 띄움
+            if(showForm == null)
+                InitShowFormDelegate();
+            this.BeginInvoke(showForm, new object[] { });
+            // 호스트 창 띄움.
+            OpenHostForm();
+
         }
 
         private void 호스트에접속ToolStripMenuItem_Click(object sender, EventArgs e)
         {
+            OpenClientForm();
+        }
+
+        private void OpenClientForm()
+        {
             (new StudyLog.Client.ClientForm()).ShowDialog();
         }
+
+        #region 호스트 창을 띄우고, Main프로그램은 최소화. 호스트 창을 닫으면, Main프로그램 다시 정상화
+        private void OpenHostForm()
+        {
+            // 메인 창을 최소화하고, 호스트 열기 창을 정상크기로 해서, 실행.
+            this.WindowState = FormWindowState.Minimized;
+            StudyLog.Server.HostForm hostForm = new StudyLog.Server.HostForm();
+            hostForm.StartPosition = FormStartPosition.WindowsDefaultLocation;  // 새로 연 클라이언트와 겹치면 헷갈릴 수 있으므로,
+            hostForm.WindowState = FormWindowState.Normal;
+            hostForm.TopMost = true;
+            hostForm.BringToFront();
+            hostForm.ShowDialog();
+            //(new StudyLog.Server.HostForm()).ShowDialog();
+            // 메인 창을 다시 복구.
+            this.WindowState = FormWindowState.Normal;
+            this.BringToFront();
+        }
+
+        #endregion 호스트 창을 띄우고, Main프로그램은 최소화. 호스트 창을 닫으면, Main프로그램 다시 정상화. 끝.
+
+        #region 클라이언트 창을 띄우기 위한 부분. 확장성을 위해, 커스텀 대리자로 스레드 실행
+        delegate void ShowFormHandler();
+        ShowFormHandler showForm;
+
+        // 커스텀 대리자 메모리 할당
+        private void InitShowFormDelegate() 
+        {
+            showForm = new ShowFormHandler(RunClientForm);
+
+        }
+
+        // 클라이언트모드로 프로그램 하나 더 실행
+        private void RunClientForm()
+        {
+            string currentFileFullPath = System.Windows.Forms.Application.ExecutablePath;
+            System.Diagnostics.Process clientProgram = new System.Diagnostics.Process();
+            clientProgram.StartInfo.FileName = currentFileFullPath;
+            clientProgram.StartInfo.Arguments = "ClientOn";
+            clientProgram.Start();
+        }
+        #endregion 클라이언트 창을 띄우기 위한 부분. 확장성을 위해, 커스텀 대리자로 스레드 실행. 끝.
 
     }
 }

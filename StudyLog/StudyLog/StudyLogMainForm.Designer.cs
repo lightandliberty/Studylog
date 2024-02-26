@@ -56,7 +56,7 @@ namespace StudyLog
             this.호스트열기ToolStripMenuItem,
             this.호스트에접속ToolStripMenuItem});
             this.contextMenuStrip1.Name = "contextMenuStrip1";
-            this.contextMenuStrip1.Size = new System.Drawing.Size(199, 158);
+            this.contextMenuStrip1.Size = new System.Drawing.Size(199, 180);
             // 
             // 시작끝ToolStripMenuItem
             // 
@@ -91,6 +91,7 @@ namespace StudyLog
             this.기록후종료여부ToolStripMenuItem.Name = "기록후종료여부ToolStripMenuItem";
             this.기록후종료여부ToolStripMenuItem.Size = new System.Drawing.Size(198, 22);
             this.기록후종료여부ToolStripMenuItem.Text = "기록 후 종료 여부 설정";
+            this.기록후종료여부ToolStripMenuItem.Visible = false;
             this.기록후종료여부ToolStripMenuItem.Click += new System.EventHandler(this.기록후종료여부ToolStripMenuItem_Click);
             // 
             // 호스트열기ToolStripMenuItem
@@ -98,6 +99,7 @@ namespace StudyLog
             this.호스트열기ToolStripMenuItem.Name = "호스트열기ToolStripMenuItem";
             this.호스트열기ToolStripMenuItem.Size = new System.Drawing.Size(198, 22);
             this.호스트열기ToolStripMenuItem.Text = "호스트 열기";
+            this.호스트열기ToolStripMenuItem.Visible = false;
             this.호스트열기ToolStripMenuItem.Click += new System.EventHandler(this.호스트열기ToolStripMenuItem_Click);
             // 
             // 호스트에접속ToolStripMenuItem
@@ -105,6 +107,7 @@ namespace StudyLog
             this.호스트에접속ToolStripMenuItem.Name = "호스트에접속ToolStripMenuItem";
             this.호스트에접속ToolStripMenuItem.Size = new System.Drawing.Size(198, 22);
             this.호스트에접속ToolStripMenuItem.Text = "호스트에 접속";
+            this.호스트에접속ToolStripMenuItem.Visible = false;
             this.호스트에접속ToolStripMenuItem.Click += new System.EventHandler(this.호스트에접속ToolStripMenuItem_Click);
             // 
             // closeBtn
@@ -126,7 +129,7 @@ namespace StudyLog
             this.shadowPanel1.Controls.Add(this.studyBtn);
             this.shadowPanel1.Dock = System.Windows.Forms.DockStyle.Fill;
             this.shadowPanel1.EdgeWidth = 2;
-            this.shadowPanel1.EndColor = System.Drawing.Color.Pink;
+            this.shadowPanel1.EndColor = System.Drawing.Color.LightPink;
             this.shadowPanel1.FlatBorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(102)))), ((int)(((byte)(102)))), ((int)(((byte)(102)))));
             this.shadowPanel1.FocusScaleHeight = 0.85F;
             this.shadowPanel1.FocusScaleWidth = 0.95F;

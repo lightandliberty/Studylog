@@ -79,7 +79,7 @@ namespace StudyLog
                 FolderBrowserDialog fbd = new FolderBrowserDialog();
                 if (DialogResult.OK == fbd.ShowDialog())
                 {
-                    optionFormArgs.filepath = currentFilePathLbl.Text = fbd.SelectedPath;
+                    optionFormArgs.filepath = currentFilePathLbl.Text = StudyLog.Properties.Settings.Default.saveFolder = fbd.SelectedPath;
                     currentFilePathLbl.Refresh();
                     System.Threading.Thread.Sleep(1000);
                     this.Close();

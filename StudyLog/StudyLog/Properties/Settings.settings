@@ -6,9 +6,12 @@
       <Value Profile="(Default)">0</Value>
     </Setting>
     <Setting Name="ExitAfterWrite" Type="System.Boolean" Scope="User">
-      <Value Profile="(Default)">False</Value>
+      <Value Profile="(Default)">True</Value>
     </Setting>
     <Setting Name="hostIP" Type="System.String" Scope="User">
+      <Value Profile="(Default)" />
+    </Setting>
+    <Setting Name="saveFolder" Type="System.String" Scope="User">
       <Value Profile="(Default)" />
     </Setting>
   </Settings>

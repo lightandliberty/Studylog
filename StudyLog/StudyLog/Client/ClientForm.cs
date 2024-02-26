@@ -63,11 +63,21 @@ namespace StudyLog.Client
             service = new CNetworkService();
             connector = new CConnector(service);
             connector.connected_callback += OnConnectedServer;
-            endPoint = new IPEndPoint(IPAddress.Parse(settingFormArgs.hostIP), port);
         }
 
         private void ConnectHost()
         {
+            try
+            {
+                endPoint = new IPEndPoint(IPAddress.Parse(settingFormArgs.hostIP), port);
+            }
+            catch (Exception ex)
+            {
+                isConnected = false;
+                MessageBox.Show("IP주소 설정이 잘못되었습니다. 다시 설정해 주세요.^^");
+                Console.WriteLine(ex.Message);
+                return;
+            }
             // connector는 소켓. ConnectAsync(접속객체)로 접속하고, 콜백으로 CNetworkService에 소켓을 전달해 서버로부터 수신을 받고, IPeer메서드를 등록함.
             connector.Connect(endPoint);    // 서버로부터 수신 시작.
             connectPN.TextString = "종료";

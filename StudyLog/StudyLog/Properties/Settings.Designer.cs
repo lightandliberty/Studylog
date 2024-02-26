@@ -37,7 +37,7 @@ namespace StudyLog.Properties {
         
         [global::System.Configuration.UserScopedSettingAttribute()]
         [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
-        [global::System.Configuration.DefaultSettingValueAttribute("False")]
+        [global::System.Configuration.DefaultSettingValueAttribute("True")]
         public bool ExitAfterWrite {
             get {
                 return ((bool)(this["ExitAfterWrite"]));
@@ -56,6 +56,18 @@ namespace StudyLog.Properties {
             }
             set {
                 this["hostIP"] = value;
+            }
+        }
+        
+        [global::System.Configuration.UserScopedSettingAttribute()]
+        [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+        [global::System.Configuration.DefaultSettingValueAttribute("")]
+        public string saveFolder {
+            get {
+                return ((string)(this["saveFolder"]));
+            }
+            set {
+                this["saveFolder"] = value;
             }
         }
     }
